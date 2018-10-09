@@ -1,0 +1,24 @@
+{
+  "name": "veres-one-consensus-continuity-elector-selection",
+  "version": "0.0.1-0",
+  "description": "Continuity elector selection using most recent participants.",
+  "main": "lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/veres-one/veres-one-consensus-continuity-elector-selection.git"
+  },
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "http://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/veres-one/veres-one-consensus-continuity-elector-selection/issues"
+  },
+  "homepage": "https://github.com/veres-one/veres-one-consensus-continuity-elector-selection",
+  "dependencies": {},
+  "peerDependencies": {
+    "bedrock": "^1.13.0",
+    "bedrock-ledger-node": "^2.0.0"
+  }
+}
