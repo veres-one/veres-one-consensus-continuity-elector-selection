@@ -16,9 +16,12 @@
     "url": "https://github.com/veres-one/veres-one-consensus-continuity-elector-selection/issues"
   },
   "homepage": "https://github.com/veres-one/veres-one-consensus-continuity-elector-selection",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.11"    
+  },
   "peerDependencies": {
     "bedrock": "^1.13.0",
-    "bedrock-ledger-node": "^2.0.0"
+    "bedrock-ledger-node": "^3.0.0",
+    "bedrock-veres-one-context": "^2.0.0"
   }
 }
