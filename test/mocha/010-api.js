@@ -16,7 +16,7 @@ describe('Elector Selection APIs', () => {
   let electorPoolDocument;
   before(async () => {
     const v1 = dids.methods.veres();
-    const {doc: electorDidDocument} = await v1.generate({});
+    const {doc: electorDidDocument} = await v1.generate();
     const {id: electorDid} = electorDidDocument;
     const electorServiceId = `urn:uuid:${uuid()}`;
     electorDidDocument.service = [{
