@@ -29,6 +29,7 @@
     "bedrock-views": "^6.0.0",
     "did-io": "github:digitalbazaar/did-io#development",
     "uuid": "^3.3.2",
-    "veres-one-consensus-continuity-elector-selection": "file:.."
+    "veres-one-consensus-continuity-elector-selection": "file:..",
+    "veres-one-validator": "^5.0.0"
   }
 }

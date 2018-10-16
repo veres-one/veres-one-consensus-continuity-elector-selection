@@ -22,7 +22,7 @@ describe('Elector Selection APIs', () => {
     electorDidDocument.service = [{
       id: electorServiceId,
       type: 'Continuity2017Peer',
-      endpoint: mockData.endpoint.alpha,
+      serviceEndpoint: mockData.endpoint.alpha,
     }];
 
     const ledgerConfiguration = mockData.ledgerConfiguration.beta;

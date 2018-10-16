@@ -61,4 +61,11 @@ ledgerConfiguration.beta = {
     // corresponds to electorPoolDocument.alpha
     electorPool: 'urn:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
   },
+  operationValidator: [{
+    type: 'VeresOneValidator2017',
+    validatorFilter: [{
+      type: 'ValidatorFilterByType',
+      validatorFilterByType: ['CreateWebLedgerRecord']
+    }]
+  }]
 };
