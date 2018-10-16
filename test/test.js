@@ -6,6 +6,7 @@ require('bedrock-ledger-node');
 require('bedrock-mongodb');
 require('bedrock-ledger-consensus-continuity');
 require('veres-one-consensus-continuity-elector-selection');
+require('veres-one-validator');
 
 // FIXME: remove if not needed
 /*
