@@ -6,6 +6,7 @@
 const bedrock = require('bedrock');
 const {config} = bedrock;
 const {constants} = config;
+const uuid = require('uuid/v4');
 
 const api = {};
 module.exports = api;
@@ -43,12 +44,13 @@ electorPoolDocument.alpha = {
   electorPool: []
 };
 
-const endpoint = api.endpoint = {};
+const endpoint = api.endpoint = [];
 
-endpoint.alpha = 'https://example.com/consensus/continuity2017/voters/' +
-  'z6MkpuVHNa8Vv9UDKKnkBs5XHapY4f1faKKtH1v7YDQ93KRJ';
-endpoint.beta = 'https://example.com/consensus/continuity2017/voters/' +
-  'z6MkwTs4RvbreqWT9xUF85WCTD4D8zq2P1vzg4inFj72R734';
+// NOTE: actual endpoints terminate with a base58 encoded public key
+for(let i = 0; i < 10; ++i) {
+  endpoint.push('https://example.com/consensus/continuity2017/voters/' +
+    uuid());
+}
 
 const ledgerConfiguration = api.ledgerConfiguration = {};
 // no electorPool defined
