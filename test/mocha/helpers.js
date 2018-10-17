@@ -14,9 +14,7 @@ api.sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
  * Wrap a DID Document in a Web Ledger Operation.
  */
 api.wrap = ({didDocument}) => ({
-  '@context': [
-    constants.WEB_LEDGER_CONTEXT_V1_URL, constants.VERES_ONE_CONTEXT_URL
-  ],
+  '@context': constants.WEB_LEDGER_CONTEXT_V1_URL,
   record: didDocument,
   type: 'CreateWebLedgerRecord',
 });
