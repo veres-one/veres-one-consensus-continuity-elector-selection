@@ -10,29 +10,37 @@ const {constants} = config;
 const api = {};
 module.exports = api;
 
+const electorDocument = api.electorDocument = {};
+electorDocument.alpha = {
+  id: 'urn:uuid:89a62413-0ada-461b-b672-1b28afefaca8',
+  elector: 'did:v1:nym:50f28192-8f52-4bf2-a9b1-d203f6611456',
+  service: 'urn:uuid:50f28192-8f52-4bf2-a9b1-d203f6611456',
+
+  // FIXME: is `type` allowed/required here?
+
+  // other restrictions/capabilities like guarantor, recovery,
+  // or ocap w/ticket caveat
+  capability: [{
+    caveat: [{
+      type: 'VeresOneElectorTicketAgent' /* TBD */
+    }],
+    id: '', // set to a DID in test
+    invocationTarget: '', // set to the ledgerId in test
+  }]
+};
+
 const electorPoolDocument = api.electorPoolDocument = {};
 electorPoolDocument.alpha = {
   // FIXME: is this correct?
   '@context': constants.VERES_ONE_CONTEXT_URL,
   // corresponds to ledgerConfiguration.beta
   id: 'urn:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
+
   // FIXME: enable this term when it is finalized and added to context
   // veresOneTicketRate: 10, /* TBD */
+
   invoker: '', // replaced with DID in test
-  electorPool: [{
-    id: 'urn:uuid:89a62413-0ada-461b-b672-1b28afefaca8',
-    elector: 'did:v1:nym:50f28192-8f52-4bf2-a9b1-d203f6611456',
-    service: 'urn:uuid:50f28192-8f52-4bf2-a9b1-d203f6611456',
-    // other restrictions/capabilities like guarantor, recovery,
-    // or ocap w/ticket caveat
-    capability: [{
-      caveat: [{
-        type: 'VeresOneElectorTicketAgent' /* TBD */
-      }],
-      id: '', // set to a DID in test
-      invocationTarget: '', // set to the ledgerId in test
-    }]
-  }]
+  electorPool: []
 };
 
 const endpoint = api.endpoint = {};
