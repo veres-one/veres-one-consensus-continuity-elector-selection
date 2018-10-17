@@ -3,6 +3,7 @@
  */
 'use strict';
 
+const bedrock = require('bedrock');
 const brLedgerNode = require('bedrock-ledger-node');
 const dids = require('did-io');
 const es = require('veres-one-consensus-continuity-elector-selection');
@@ -35,11 +36,15 @@ describe('Elector Selection APIs', () => {
       serviceEndpoint: mockData.endpoint.alpha,
     }];
 
-    const ledgerConfiguration = mockData.ledgerConfiguration.beta;
-    electorPoolDocument = mockData.electorPoolDocument.alpha;
-    electorPoolDocument.electorPool[0].elector = electorDid;
-    electorPoolDocument.electorPool[0].service = electorServiceId;
-    electorPoolDocument.electorPool[0].capability[0].id = maintainerDid;
+    const ledgerConfiguration = bedrock.util.clone(
+      mockData.ledgerConfiguration.beta);
+    electorPoolDocument = bedrock.util.clone(
+      mockData.electorPoolDocument.alpha);
+    const electorDocument = mockData.electorDocument.alpha;
+    electorDocument.elector = electorDid;
+    electorDocument.service = electorServiceId;
+    electorDocument.capability[0].id = maintainerDid;
+    electorPoolDocument.electorPool.push(electorDocument);
     electorPoolDocument.invoker = maintainerDid;
     try {
       // setup a new ledger
@@ -68,8 +73,9 @@ describe('Elector Selection APIs', () => {
       // is this correct?
 
       // the invocationTarget is the ledger ID
-      electorPoolDocument.electorPool[0].capability[0].invocationTarget =
-        ledgerNode.ledger;
+      // electorPoolDocument.electorPool[0].capability[0].invocationTarget =
+      //   ledgerNode.ledger;
+      electorDocument.capability[0].invocationTarget = ledgerNode.ledger;
 
       operation = v1.client.wrap({didDocument: electorPoolDocument});
       const invokePublicKey = maintainerDidDocumentFull.doc
@@ -122,6 +128,7 @@ describe('Elector Selection APIs', () => {
       Object.values(r).map(e => e.id).should.have.same.members([
         mockData.endpoint.alpha
       ]);
+      console.log('RRRRRR', r);
     });
   });
 });
