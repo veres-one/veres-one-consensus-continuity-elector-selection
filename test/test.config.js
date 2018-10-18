@@ -18,4 +18,4 @@ config.ledger.jobs.scheduleConsensusWork.enabled = true;
 
 // tune consensus to work within the test framework
 config['ledger-consensus-continuity'].writer.debounce = 250;
-config['ledger-consensus-continuity'].worker.session.maxTime = 5500;
+config['ledger-consensus-continuity'].worker.session.maxTime = 6000;
