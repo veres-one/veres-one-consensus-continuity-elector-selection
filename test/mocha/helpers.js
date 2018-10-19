@@ -7,9 +7,11 @@ const bedrock = require('bedrock');
 const brLedgerNode = require('bedrock-ledger-node');
 const {config: {constants}} = bedrock;
 const dids = require('did-io');
+const jsigs = require('jsonld-signatures')();
 const uuid = require('uuid/v4');
 
-dids.use('jsonld', bedrock.jsonld);
+jsigs.use('jsonld', bedrock.jsonld);
+dids.use('jsonld-signatures', jsigs);
 
 const api = {};
 module.exports = api;
