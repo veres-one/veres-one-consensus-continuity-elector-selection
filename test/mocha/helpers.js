@@ -18,9 +18,6 @@ api.continuityServiceType = 'Continuity2017Peer';
 
 api.initializeLedger = async (
   {electorCount = 1, mockData, embeddedServiceCount = 0}) => {
-  // ms to wait for consensus after adding an operation
-  const consensusWaitTime = 4000;
-
   const v1 = dids.methods.veres();
 
   const maintainerDidDocumentFull = await v1.generate();
@@ -47,7 +44,7 @@ api.initializeLedger = async (
 
   // setup a new ledger
   const ledgerNode = await brLedgerNode.add(null, {ledgerConfiguration});
-
+  const runWorkers = ledgerNode.consensus._worker._run;
   for(const elector of electors) {
     const electorDocument = bedrock.util.clone(mockData.electorDocument.alpha);
     const {id: electorDid} = elector.doc;
@@ -92,7 +89,8 @@ api.initializeLedger = async (
   operation = await v1.attachProofs(
     {operation, options: {didDocument: maintainerDidDocumentFull}});
   await ledgerNode.operations.add({operation});
-  await api.sleep(consensusWaitTime);
+  // wait for the new operation to reach consensus
+  await runWorkers(ledgerNode);
 
   // add a DID document for a mock electors and wait for it to reach
   // consensus, this allows for the possibility of the veres-one
@@ -105,7 +103,7 @@ api.initializeLedger = async (
     await ledgerNode.operations.add({operation});
   }
   // wait for the new operation to reach consensus
-  await api.sleep(consensusWaitTime);
+  await runWorkers(ledgerNode);
 
   operation = v1.client.wrap({didDocument: electorPoolDocument});
   const invokePublicKey = maintainerDidDocumentFull.doc
@@ -136,7 +134,7 @@ api.initializeLedger = async (
   // add an electorPool Document
   await ledgerNode.operations.add({operation});
   // wait for the new operation to reach consensus
-  await api.sleep(consensusWaitTime);
+  await runWorkers(ledgerNode);
 
   return {
     electorPoolDocument,
