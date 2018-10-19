@@ -12,15 +12,15 @@ let ledgerNode;
 let electorPoolDocument;
 describe('Elector Selection APIs', () => {
   describe('_getElectorPoolElectors API', () => {
-    it('returns null if electorPool is not defined', async () => {
+    it('returns empty object if electorPool is not defined', async () => {
       const ledgerConfiguration = mockData.ledgerConfiguration.alpha;
       const r = await es._getElectorPoolElectors(
         {ledgerConfiguration, ledgerNode});
-      expect(r).to.be.null;
+      expect(r).to.eql({});
     });
     describe('Dereferenced service descriptions', () => {
       it('extracts one elector from an electorPool document', async function() {
-        this.timeout(30000);
+        this.timeout(60000);
         const electorCount = 1;
         try {
           const r = await helpers.initializeLedger({electorCount, mockData});
@@ -38,7 +38,7 @@ describe('Elector Selection APIs', () => {
           mockData.endpoint.slice(0, electorCount));
       });
       it('extracts three electors from an electorPool doc', async function() {
-        this.timeout(30000);
+        this.timeout(60000);
         const electorCount = 3;
         try {
           const r = await helpers.initializeLedger({electorCount, mockData});
@@ -56,7 +56,7 @@ describe('Elector Selection APIs', () => {
     }); // end Dereferenced service descriptions
     describe('Dereferenced service descriptions', () => {
       it('extracts one elector from an electorPool document', async function() {
-        this.timeout(30000);
+        this.timeout(60000);
         const electorCount = 0;
         const embeddedServiceCount = 1;
         try {
@@ -74,7 +74,7 @@ describe('Elector Selection APIs', () => {
           mockData.endpoint.slice(0, embeddedServiceCount + electorCount));
       });
       it('extracts three electors from an electorPool doc', async function() {
-        this.timeout(30000);
+        this.timeout(60000);
         const electorCount = 0;
         const embeddedServiceCount = 3;
         try {
@@ -95,7 +95,7 @@ describe('Elector Selection APIs', () => {
 
     describe('Mixed dereferenced/embedded service descriptions', () => {
       it('one dereferenced and one embedded', async function() {
-        this.timeout(30000);
+        this.timeout(60000);
         const electorCount = 1;
         const embeddedServiceCount = 1;
         try {
@@ -113,7 +113,7 @@ describe('Elector Selection APIs', () => {
           mockData.endpoint.slice(0, embeddedServiceCount + electorCount));
       });
       it('one dereferenced and two embedded', async function() {
-        this.timeout(30000);
+        this.timeout(60000);
         const electorCount = 1;
         const embeddedServiceCount = 2;
         try {
@@ -131,7 +131,7 @@ describe('Elector Selection APIs', () => {
           mockData.endpoint.slice(0, embeddedServiceCount + electorCount));
       });
       it('two dereferenced and one embedded', async function() {
-        this.timeout(30000);
+        this.timeout(60000);
         const electorCount = 2;
         const embeddedServiceCount = 1;
         try {
