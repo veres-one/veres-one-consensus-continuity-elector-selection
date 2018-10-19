@@ -19,7 +19,7 @@ module.exports = api;
 api.continuityServiceType = 'Continuity2017Peer';
 
 api.initializeLedger = async (
-  {electorCount = 1, mockData, embeddedServiceCount = 0}) => {
+  {electorCount = 0, mockData, embeddedServiceCount = 0}) => {
   const v1 = dids.methods.veres();
 
   const maintainerDidDocumentFull = await v1.generate();
