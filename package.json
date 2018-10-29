@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/veres-one/veres-one-consensus-continuity-elector-selection",
   "dependencies": {
+    "buffer-xor": "^2.0.2",
     "lodash": "^4.17.11"
   },
   "peerDependencies": {
