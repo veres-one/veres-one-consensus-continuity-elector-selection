@@ -18,7 +18,7 @@
     "bedrock-ledger-context": "^3.0.0",
     "bedrock-ledger-node": "digitalbazaar/bedrock-ledger-node#refactorValidation",
     "bedrock-ledger-storage-mongodb": "^1.0.1",
-    "bedrock-ledger-utils": "digitalbazaar/bedrock-ledger-utils#implementation",    
+    "bedrock-ledger-utils": "digitalbazaar/bedrock-ledger-utils#implementation",
     "bedrock-mongodb": "^5.4.0",
     "bedrock-permission": "^2.5.3",
     "bedrock-redis": "^3.4.0",
