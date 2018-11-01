@@ -6,12 +6,13 @@
 const bedrock = require('bedrock');
 const brLedgerNode = require('bedrock-ledger-node');
 const {config: {constants}} = bedrock;
-const dids = require('did-io');
+const didv1 = require('did-veres-one');
 const jsigs = require('jsonld-signatures')();
 const uuid = require('uuid/v4');
 
 jsigs.use('jsonld', bedrock.jsonld);
-dids.use('jsonld-signatures', jsigs);
+didv1.use('jsonld-signatures', jsigs);
+const v1 = didv1.veres();
 
 const api = {};
 module.exports = api;
@@ -20,8 +21,6 @@ api.continuityServiceType = 'Continuity2017Peer';
 
 api.initializeLedger = async (
   {electorCount = 0, mockData, embeddedServiceCount = 0}) => {
-  const v1 = dids.methods.veres();
-
   const maintainerDidDocumentFull = await v1.generate();
   const {doc: maintainerDidDocument} = maintainerDidDocumentFull;
   const {id: maintainerDid} = maintainerDidDocument;
@@ -29,13 +28,11 @@ api.initializeLedger = async (
   const electors = [];
   for(let i = 0; i < electorCount; ++i) {
     const electorDidDocumentFull = await v1.generate();
-    const {doc: electorDidDocument} = electorDidDocumentFull;
-    const electorServiceId = `urn:uuid:${uuid()}`;
-    electorDidDocument.service = [{
-      id: electorServiceId,
+    electorDidDocumentFull.addService({
+      endpoint: mockData.endpoint[i],
+      name: api.continuityServiceType,
       type: api.continuityServiceType,
-      serviceEndpoint: mockData.endpoint[i],
-    }];
+    });
     electors.push(electorDidDocumentFull);
   }
 
@@ -67,7 +64,8 @@ api.initializeLedger = async (
     const electorDocument = bedrock.util.clone(mockData.electorDocument.alpha);
     // elector DIDs are not used with embedded services descriptors
     const electorDid = `did:v1:test:uuid:${uuid()}`;
-    const electorServiceId = `urn:uuid:${uuid()}`;
+    // FIXME: did URI for service id?
+    const electorServiceId = `${electorDid};service=MyServiceId`;
     electorDocument.elector = electorDid;
     electorDocument.service = {
       id: electorServiceId,

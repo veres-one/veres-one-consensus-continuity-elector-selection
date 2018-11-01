@@ -15,10 +15,11 @@ describe('Elector Selection APIs', () => {
     describe('group a', () => {
       it('extracts one elector from an electorPool document', async function() {
         this.timeout(60000);
+        const electorCount = 0;
         const embeddedServiceCount = 1;
         try {
           const r = await helpers.initializeLedger(
-            {embeddedServiceCount, mockData});
+            {electorCount, embeddedServiceCount, mockData});
           ledgerNode = r.ledgerNode;
           electorPoolDocument = r.electorPoolDocument;
         } catch(err) {
