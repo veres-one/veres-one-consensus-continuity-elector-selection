@@ -61,6 +61,7 @@ ledgerConfiguration.alpha = {
   consensusMethod: 'Continuity2017',
   electorSelectionMethod: {
     type: 'VeresOne',
+    electorCount: 10,
   },
 };
 
@@ -71,9 +72,13 @@ ledgerConfiguration.beta = {
   consensusMethod: 'Continuity2017',
   electorSelectionMethod: {
     type: 'VeresOne',
+    electorCount: 10,
     // corresponds to electorPoolDocument.alpha
     electorPool: 'urn:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
   },
+  ledgerConfigurationValidator: [{
+    type: 'VeresOneValidator2017',
+  }],
   operationValidator: [{
     type: 'VeresOneValidator2017',
     validatorFilter: [{
