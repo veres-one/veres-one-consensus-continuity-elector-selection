@@ -28,7 +28,7 @@
     "bedrock-validation": "^3.1.2",
     "bedrock-veres-one-context": "^3.0.0",
     "bedrock-views": "^6.0.0",
-    "did-io": "github:digitalbazaar/did-io#development",
+    "did-veres-one": "github:veres-one/did-veres-one#extract-from-did-io",
     "jsonld-signatures": "^2.3.1",
     "uuid": "^3.3.2",
     "veres-one-consensus-continuity-elector-selection": "file:..",
