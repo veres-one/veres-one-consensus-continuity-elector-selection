@@ -50,6 +50,10 @@ api.initializeLedger = async (
     const {id: electorServiceId} = elector.doc.service[0];
     electorDocument.elector = electorDid;
     electorDocument.service = electorServiceId;
+    electorDocument.type = [
+      'Continuity2017GuarantorElector',
+      'Continuity2017RecoveryElector'
+    ],
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
 
@@ -73,6 +77,10 @@ api.initializeLedger = async (
       // add offset for electorCount endpoints
       serviceEndpoint: mockData.endpoint[electorCount + i],
     };
+    electorDocument.type = [
+      'Continuity2017GuarantorElector',
+      'Continuity2017RecoveryElector'
+    ],
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
 
