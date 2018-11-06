@@ -52,7 +52,6 @@ api.initializeLedger = async (
     electorDocument.service = electorServiceId;
     electorDocument.type = [
       'Continuity2017GuarantorElector',
-      'Continuity2017RecoveryElector'
     ],
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
@@ -79,7 +78,6 @@ api.initializeLedger = async (
     };
     electorDocument.type = [
       'Continuity2017GuarantorElector',
-      'Continuity2017RecoveryElector'
     ],
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
