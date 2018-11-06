@@ -80,13 +80,10 @@ describe('Elector Selection APIs', () => {
         mockData.endpoint.slice(0, 2).should.include(
           electors.map(({id}) => id)[0]);
         recoveryElectors.should.be.an('array');
-        // FIXME: since recoveryelectors is a subset of electors (length === 1)
-        // we have one recovery elector here (the elector) although there are
-        // two recovery electors defined in the electorPool doc.  Is this
-        // correct?
         recoveryElectors.should.have.length(1);
+        // the recovery elector selected should be the same as the one elector
         recoveryElectors.map(({id}) => id).should.have.same.members(
-          mockData.endpoint.slice(0, 1));
+          electors.map(({id}) => id));
       });
     });
   });
