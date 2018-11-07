@@ -23,7 +23,7 @@
   "peerDependencies": {
     "bedrock": "^1.13.0",
     "bedrock-ledger-node": "^3.0.0",
-    "bedrock-veres-one-context": "^4.0.0",
+    "bedrock-veres-one-context": "^5.0.0",
     "bedrock-ledger-utils": "digitalbazaar/bedrock-ledger-utils#implementation"
   }
 }
