@@ -30,7 +30,6 @@ describe('Elector Selection APIs', () => {
         const blockHeight = latestBlockSummary.eventBlock.block.blockHeight + 1;
         const r = await es.getBlockElectors(
           {blockHeight, latestBlockSummary, ledgerConfiguration, ledgerNode});
-        console.log('RRRRRRR', JSON.stringify(r, null, 2));
         should.exist(r);
         r.should.be.an('object');
         r.should.have.property('electors');
@@ -64,7 +63,6 @@ describe('Elector Selection APIs', () => {
         const blockHeight = latestBlockSummary.eventBlock.block.blockHeight + 1;
         const r = await es.getBlockElectors(
           {blockHeight, latestBlockSummary, ledgerConfiguration, ledgerNode});
-        console.log('RRRRRRR', JSON.stringify(r, null, 2));
         should.exist(r);
         r.should.be.an('object');
         r.should.have.property('electors');
@@ -77,7 +75,7 @@ describe('Elector Selection APIs', () => {
         // elector is returned. Since there is a mixin sort involved in making
         // the selection, it is non-trivial to determine which one will be
         // selected.
-        mockData.endpoint.slice(0, 2).should.include(
+        mockData.endpoint.slice(0, 3).should.include(
           electors.map(({id}) => id)[0]);
         recoveryElectors.should.be.an('array');
         recoveryElectors.should.have.length(1);
@@ -101,7 +99,6 @@ describe('Elector Selection APIs', () => {
         const blockHeight = latestBlockSummary.eventBlock.block.blockHeight + 1;
         const r = await es.getBlockElectors(
           {blockHeight, latestBlockSummary, ledgerConfiguration, ledgerNode});
-        console.log('RRRRRRR', JSON.stringify(r, null, 2));
         should.exist(r);
         r.should.be.an('object');
         r.should.have.property('electors');
