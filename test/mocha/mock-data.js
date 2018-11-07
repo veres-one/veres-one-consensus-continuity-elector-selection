@@ -16,9 +16,7 @@ electorDocument.alpha = {
   id: 'urn:uuid:89a62413-0ada-461b-b672-1b28afefaca8',
   elector: 'did:v1:nym:50f28192-8f52-4bf2-a9b1-d203f6611456',
   service: 'urn:uuid:50f28192-8f52-4bf2-a9b1-d203f6611456',
-
-  // FIXME: is `type` allowed/required here?
-
+  type: ['Continuity2017Elector'],
   // other restrictions/capabilities like guarantor, recovery,
   // or ocap w/ticket caveat
   capability: [{
@@ -41,7 +39,8 @@ electorPoolDocument.alpha = {
   // veresOneTicketRate: 10, /* TBD */
 
   invoker: '', // replaced with DID in test
-  electorPool: []
+  electorPool: [],
+  maximumElectorCount: 0,
 };
 
 const endpoint = api.endpoint = [];
@@ -61,7 +60,6 @@ ledgerConfiguration.alpha = {
   consensusMethod: 'Continuity2017',
   electorSelectionMethod: {
     type: 'VeresOne',
-    electorCount: 10,
   },
 };
 
@@ -72,7 +70,6 @@ ledgerConfiguration.beta = {
   consensusMethod: 'Continuity2017',
   electorSelectionMethod: {
     type: 'VeresOne',
-    electorCount: 10,
     // corresponds to electorPoolDocument.alpha
     electorPool: 'urn:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
   },

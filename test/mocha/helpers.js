@@ -51,7 +51,7 @@ api.initializeLedger = async (
     electorDocument.elector = electorDid;
     electorDocument.service = electorServiceId;
     electorDocument.type = [
-      'Continuity2017GuarantorElector',
+      'Continuity2017GuarantorElector', 'Continuity2017Elector'
     ],
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
@@ -77,7 +77,7 @@ api.initializeLedger = async (
       serviceEndpoint: mockData.endpoint[electorCount + i],
     };
     electorDocument.type = [
-      'Continuity2017GuarantorElector',
+      'Continuity2017GuarantorElector', 'Continuity2017Elector'
     ],
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
@@ -88,6 +88,8 @@ api.initializeLedger = async (
     electorDocument.capability[0].invocationTarget = ledgerNode.ledger;
     electorPoolDocument.electorPool.push(electorDocument);
   }
+  electorPoolDocument.maximumElectorCount = electorCount +
+    embeddedServiceCount;
   electorPoolDocument.invoker = maintainerDid;
 
   // add a DID document for a mock maintainer and wait for consensus
