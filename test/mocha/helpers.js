@@ -19,8 +19,10 @@ module.exports = api;
 
 api.continuityServiceType = 'Continuity2017Peer';
 
-api.initializeLedger = async (
-  {electorCount = 0, mockData, embeddedServiceCount = 0}) => {
+api.initializeLedger = async ({
+  electorCount = 0, mockData, embeddedServiceCount = 0,
+  guarantorElectorCount = 0
+}) => {
   const maintainerDidDocumentFull = await v1.generate();
   const {doc: maintainerDidDocument} = maintainerDidDocumentFull;
   const {id: maintainerDid} = maintainerDidDocument;
@@ -50,9 +52,11 @@ api.initializeLedger = async (
     const {id: electorServiceId} = elector.doc.service[0];
     electorDocument.elector = electorDid;
     electorDocument.service = electorServiceId;
-    electorDocument.type = [
-      'Continuity2017GuarantorElector', 'Continuity2017Elector'
-    ],
+    electorDocument.type = ['Continuity2017Elector'];
+    if(guarantorElectorCount > 0) {
+      electorDocument.type.push('Continuity2017GuarantorElector');
+      guarantorElectorCount--;
+    }
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
 
@@ -67,7 +71,7 @@ api.initializeLedger = async (
     const electorDocument = bedrock.util.clone(mockData.electorDocument.alpha);
     // elector DIDs are not used with embedded services descriptors
     const electorDid = `did:v1:test:uuid:${uuid()}`;
-    // FIXME: did URI for service id?
+    // FIXME: did URI for service id in embedded service docs?
     const electorServiceId = `${electorDid};service=MyServiceId`;
     electorDocument.elector = electorDid;
     electorDocument.service = {
@@ -76,9 +80,11 @@ api.initializeLedger = async (
       // add offset for electorCount endpoints
       serviceEndpoint: mockData.endpoint[electorCount + i],
     };
-    electorDocument.type = [
-      'Continuity2017GuarantorElector', 'Continuity2017Elector'
-    ],
+    electorDocument.type = ['Continuity2017Elector'];
+    if(guarantorElectorCount > 0) {
+      electorDocument.type.push('Continuity2017GuarantorElector');
+      guarantorElectorCount--;
+    }
     electorDocument.capability[0].id = maintainerDid;
     // the invocationTarget is the ledger ID
 
