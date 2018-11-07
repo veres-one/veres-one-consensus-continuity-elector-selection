@@ -48,9 +48,9 @@ describe('Elector Selection APIs', () => {
         recoveryElectors.map(({id}) => id).should.have.same.members(
           mockData.endpoint.slice(0, 1));
       });
-      it('extracts one elector from an electorPool document', async function() {
+      it('returns one elector w/3 in electorPool document', async function() {
         this.timeout(60000);
-        const embeddedServiceCount = 2;
+        const embeddedServiceCount = 3;
         try {
           const r = await helpers.initializeLedger(
             {embeddedServiceCount, mockData});
@@ -84,6 +84,43 @@ describe('Elector Selection APIs', () => {
         // the recovery elector selected should be the same as the one elector
         recoveryElectors.map(({id}) => id).should.have.same.members(
           electors.map(({id}) => id));
+      });
+      it('returns 4 electors w/4 in electorPool document', async function() {
+        this.timeout(60000);
+        const embeddedServiceCount = 4;
+        try {
+          const r = await helpers.initializeLedger(
+            {embeddedServiceCount, mockData});
+          ledgerNode = r.ledgerNode;
+          electorPoolDocument = r.electorPoolDocument;
+        } catch(err) {
+          assertNoError(err);
+        }
+        const ledgerConfiguration = await ledgerNode.config.get();
+        const latestBlockSummary = await ledgerNode.blocks.getLatestSummary();
+        const blockHeight = latestBlockSummary.eventBlock.block.blockHeight + 1;
+        const r = await es.getBlockElectors(
+          {blockHeight, latestBlockSummary, ledgerConfiguration, ledgerNode});
+        console.log('RRRRRRR', JSON.stringify(r, null, 2));
+        should.exist(r);
+        r.should.be.an('object');
+        r.should.have.property('electors');
+        r.should.have.property('recoveryElectors');
+        const {electors, recoveryElectors} = r;
+        electors.should.be.an('array');
+        electors.should.have.length(4);
+        // NOTE: the two electors specified in the electorPool document are
+        // sorted to the top of the list above the genesisNode and only one
+        // elector is returned. Since there is a mixin sort involved in making
+        // the selection, it is non-trivial to determine which one will be
+        // selected.
+        mockData.endpoint.slice(0, 4).should.include(
+          electors.map(({id}) => id)[0]);
+        recoveryElectors.should.be.an('array');
+        recoveryElectors.should.have.length(2);
+        // the recovery elector selected should be the same as the one elector
+        recoveryElectors.every(({id}) =>
+          electors.map(({id}) => id).includes(id)).should.be.true;
       });
     });
   });
