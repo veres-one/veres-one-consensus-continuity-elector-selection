@@ -11,8 +11,7 @@ const jsigs = require('jsonld-signatures')();
 const uuid = require('uuid/v4');
 
 jsigs.use('jsonld', bedrock.jsonld);
-didv1.use('jsonld-signatures', jsigs);
-const v1 = didv1.veres();
+const v1 = new didv1.VeresOne();
 
 const api = {};
 module.exports = api;
