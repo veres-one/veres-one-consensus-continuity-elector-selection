@@ -1,6 +1,6 @@
 {
   "name": "veres-one-consensus-continuity-elector-selection",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "description": "Continuity elector selection using elector pool",
   "main": "lib",
   "repository": {
