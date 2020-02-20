@@ -1,7 +1,7 @@
 {
   "name": "veres-one-consensus-continuity-elector-selection",
   "version": "0.0.1-0",
-  "description": "Continuity elector selection using most recent participants.",
+  "description": "Continuity elector selection using elector pool",
   "main": "lib",
   "repository": {
     "type": "git",
