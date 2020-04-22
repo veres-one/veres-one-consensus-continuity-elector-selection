@@ -18,9 +18,9 @@
     "bedrock-ledger-consensus-continuity": "^4.0.0",
     "bedrock-ledger-consensus-continuity-storage": "^2.0.0",
     "bedrock-ledger-context": "^14.0.0",
-    "bedrock-ledger-node": "^9.0.0",
+    "bedrock-ledger-node": "^10.0.0",
     "bedrock-ledger-storage-mongodb": "^3.0.0",
-    "bedrock-ledger-utils": "digitalbazaar/bedrock-ledger-utils#implementation",
+    "bedrock-ledger-utils": "^1.0.0",
     "bedrock-mongodb": "^6.0.0",
     "bedrock-permission": "^2.5.3",
     "bedrock-redis": "^3.4.0",
@@ -30,10 +30,10 @@
     "bedrock-test": "^4.0.0",
     "bedrock-validation": "^4.0.0",
     "bedrock-veres-one-context": "^10.0.0",
-    "did-veres-one": "veres-one/did-veres-one#update-context",
-    "jsonld-signatures": "^2.3.1",
+    "did-veres-one": "^11.0.0",
+    "jsonld-signatures": "^5.0.0",
     "uuid": "^3.3.2",
     "veres-one-consensus-continuity-elector-selection": "file:..",
-    "veres-one-validator": "veres-one/veres-one-validator#validate-service-against-validation-rules"
+    "veres-one-validator": "veres-one/veres-one-validator"
   }
 }

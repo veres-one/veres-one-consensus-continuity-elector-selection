@@ -33,7 +33,7 @@ electorPoolDocument.alpha = {
   // FIXME: is this correct?
   '@context': constants.VERES_ONE_CONTEXT_URL,
   // corresponds to ledgerConfiguration.beta
-  id: 'urn:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
+  id: 'did:v1:test:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
 
   // FIXME: enable this term when it is finalized and added to context
   // veresOneTicketRate: 10, /* TBD */
@@ -56,22 +56,23 @@ const ledgerConfiguration = api.ledgerConfiguration = {};
 ledgerConfiguration.alpha = {
   '@context': constants.WEB_LEDGER_CONTEXT_V1_URL,
   type: 'WebLedgerConfiguration',
-  ledger: 'did:v1:eb8c22dc-bde6-4315-92e2-59bd3f3c7d59',
+  ledger: 'did:v1:nym:z279wcy175gmmaRN8cBFoqk9gnsYt2BzXQQ7GXHdYdVW3U44',
   consensusMethod: 'Continuity2017',
   electorSelectionMethod: {
     type: 'VeresOne',
   },
+  sequence: 0,
 };
 
 ledgerConfiguration.beta = {
   '@context': constants.WEB_LEDGER_CONTEXT_V1_URL,
   type: 'WebLedgerConfiguration',
-  ledger: 'did:v1:eb8c22dc-bde6-4315-92e2-59bd3f3c7d59',
+  ledger: 'did:v1:nym:z279wcy175gmmaRN8cBFoqk9gnsYt2BzXQQ7GXHdYdVW3U44',
   consensusMethod: 'Continuity2017',
   electorSelectionMethod: {
-    type: 'VeresOne',
+    type: 'ElectorPoolElectorSelection',
     // corresponds to electorPoolDocument.alpha
-    electorPool: 'urn:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
+    electorPool: 'did:v1:test:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
   },
   ledgerConfigurationValidator: [{
     type: 'VeresOneValidator2017',
@@ -82,5 +83,6 @@ ledgerConfiguration.beta = {
       type: 'ValidatorFilterByType',
       validatorFilterByType: ['CreateWebLedgerRecord', 'UpdateWebLedgerRecord']
     }]
-  }]
+  }],
+  sequence: 0,
 };

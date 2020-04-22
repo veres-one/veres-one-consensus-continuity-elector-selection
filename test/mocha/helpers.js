@@ -7,10 +7,14 @@ const bedrock = require('bedrock');
 const brLedgerNode = require('bedrock-ledger-node');
 const {config: {constants}} = bedrock;
 const didv1 = require('did-veres-one');
-const jsigs = require('jsonld-signatures')();
+const {documentLoader} = require('bedrock-jsonld-document-loader');
+const jsigs = require('jsonld-signatures');
 const uuid = require('uuid/v4');
+const {
+  purposes: {AssertionProofPurpose},
+  suites: {Ed25519Signature2018}
+} = jsigs;
 
-jsigs.use('jsonld', bedrock.jsonld);
 const v1 = new didv1.VeresOne();
 
 const api = {};
@@ -41,6 +45,17 @@ api.initializeLedger = async ({
     mockData.ledgerConfiguration.beta);
   const electorPoolDocument = bedrock.util.clone(
     mockData.electorPoolDocument.alpha);
+
+  const method = maintainerDidDocumentFull.getVerificationMethod(
+    {proofPurpose: 'assertionMethod'});
+  const assertionMethodKey = maintainerDidDocumentFull.keys[method.id];
+
+  await jsigs.sign(ledgerConfiguration, {
+    compactProof: false,
+    documentLoader,
+    suite: new Ed25519Signature2018({key: assertionMethodKey}),
+    purpose: new AssertionProofPurpose()
+  });
 
   // setup a new ledger
   const ledgerNode = await brLedgerNode.add(null, {ledgerConfiguration});
@@ -155,7 +170,7 @@ api.initializeLedger = async ({
   };
 };
 
-api.sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+api.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 /**
  * Wrap a DID Document in a Web Ledger Operation.
