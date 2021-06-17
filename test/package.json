@@ -20,7 +20,7 @@
     "bedrock-ledger-context": "^14.0.0",
     "bedrock-ledger-node": "^9.0.0",
     "bedrock-ledger-storage-mongodb": "^3.0.0",
-    "bedrock-ledger-utils": "digitalbazaar/bedrock-ledger-utils#implementation",
+    "bedrock-ledger-utils": "^1.1.0",
     "bedrock-mongodb": "^6.0.0",
     "bedrock-permission": "^2.5.3",
     "bedrock-redis": "^3.4.0",
@@ -30,10 +30,10 @@
     "bedrock-test": "^4.0.0",
     "bedrock-validation": "^4.0.0",
     "bedrock-veres-one-context": "^10.0.0",
-    "did-veres-one": "veres-one/did-veres-one#update-context",
+    "did-veres-one": "^13.0.2",
     "jsonld-signatures": "^2.3.1",
     "uuid": "^3.3.2",
     "veres-one-consensus-continuity-elector-selection": "file:..",
-    "veres-one-validator": "veres-one/veres-one-validator#validate-service-against-validation-rules"
+    "veres-one-validator": "^7.0.0"
   }
 }
