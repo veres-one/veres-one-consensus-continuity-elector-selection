@@ -10,17 +10,17 @@
     "async": "^2.4.1",
     "bedrock": "^3.0.0",
     "bedrock-express": "^3.0.0",
-    "bedrock-https-agent": "^1.0.1",
+    "bedrock-https-agent": "^2.0.0",
     "bedrock-injector": "^1.0.0",
     "bedrock-jobs": "^3.0.0",
     "bedrock-jsonld-document-loader": "^1.0.1",
-    "bedrock-ledger-consensus-continuity": "^6.0.0",
-    "bedrock-ledger-consensus-continuity-storage": "^2.0.0",
-    "bedrock-ledger-context": "^14.0.0",
-    "bedrock-ledger-node": "^9.0.0",
-    "bedrock-ledger-storage-mongodb": "^3.0.0",
+    "bedrock-ledger-consensus-continuity": "^8.0.0",
+    "bedrock-ledger-consensus-continuity-storage": "^4.0.0",
+    "bedrock-ledger-context": "^15.0.0",
+    "bedrock-ledger-node": "digitalbazaar/bedrock-ledger-node#master",
+    "bedrock-ledger-storage-mongodb": "digitalbazaar/bedrock-ledger-storage-mongodb#update-idx",
     "bedrock-ledger-utils": "^1.1.0",
-    "bedrock-mongodb": "^6.0.0",
+    "bedrock-mongodb": "^8.0.0",
     "bedrock-permission": "^2.5.3",
     "bedrock-redis": "^3.4.0",
     "bedrock-rest": "^3.0.0",
@@ -33,6 +33,6 @@
     "jsonld-signatures": "^2.3.1",
     "uuid": "^3.3.2",
     "veres-one-consensus-continuity-elector-selection": "file:..",
-    "veres-one-validator": "^7.0.0"
+    "veres-one-validator": "veres-one/veres-one-validator#update-zcap-validators"
   }
 }
