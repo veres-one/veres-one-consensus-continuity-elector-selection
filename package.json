@@ -27,7 +27,7 @@
     "bedrock-ledger-utils": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
+    "eslint": "^7.29.0",
     "eslint-config-digitalbazaar": "^2.0.1"
   }
 }

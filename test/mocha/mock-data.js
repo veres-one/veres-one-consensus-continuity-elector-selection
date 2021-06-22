@@ -13,7 +13,7 @@ module.exports = api;
 
 const electorDocument = api.electorDocument = {};
 electorDocument.alpha = {
-  id: 'urn:uuid:89a62413-0ada-461b-b672-1b28afefaca8',
+  id: 'did:v1:test:uuid:acc4c5af-7445-4046-a39c-10653a0c7ac0',
   elector: 'did:v1:nym:50f28192-8f52-4bf2-a9b1-d203f6611456',
   service: 'urn:uuid:50f28192-8f52-4bf2-a9b1-d203f6611456',
   type: ['Continuity2017Elector'],
@@ -61,6 +61,7 @@ ledgerConfiguration.alpha = {
   electorSelectionMethod: {
     type: 'VeresOne',
   },
+  sequence: 0
 };
 
 ledgerConfiguration.beta = {
@@ -69,9 +70,9 @@ ledgerConfiguration.beta = {
   ledger: 'did:v1:eb8c22dc-bde6-4315-92e2-59bd3f3c7d59',
   consensusMethod: 'Continuity2017',
   electorSelectionMethod: {
-    type: 'VeresOne',
+    type: 'ElectorPoolElectorSelection',
     // corresponds to electorPoolDocument.alpha
-    electorPool: 'urn:uuid:b3275fed-daf4-4c07-b63a-747fa8857609',
+    electorPool: 'did:v1:test:uuid:acc4c5af-7445-4046-a39c-10653a0c7ac0',
   },
   ledgerConfigurationValidator: [{
     type: 'VeresOneValidator2017',
@@ -82,5 +83,6 @@ ledgerConfiguration.beta = {
       type: 'ValidatorFilterByType',
       validatorFilterByType: ['CreateWebLedgerRecord', 'UpdateWebLedgerRecord']
     }]
-  }]
+  }],
+  sequence: 0
 };
