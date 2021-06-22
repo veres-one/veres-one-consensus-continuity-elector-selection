@@ -130,7 +130,7 @@ api.initializeLedger = async ({
     operation,
     capability: maintainerDid,
     // capabilityAction: operation.type,
-    capabilityAction: 'RegisterDid',
+    capabilityAction: 'write',
     creator,
     privateKeyBase58
   });
@@ -139,7 +139,7 @@ api.initializeLedger = async ({
     operation,
     capability: maintainerDid,
     // capabilityAction: operation.type,
-    capabilityAction: 'AuthorizeRequest',
+    capabilityAction: 'write',
     creator,
     privateKeyBase58
   });
@@ -155,7 +155,7 @@ api.initializeLedger = async ({
   };
 };
 
-api.sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+api.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 /**
  * Wrap a DID Document in a Web Ledger Operation.

@@ -9,7 +9,7 @@
   "dependencies": {
     "async": "^2.4.1",
     "bedrock": "^3.0.0",
-    "bedrock-docs": "^3.0.0",
+    "bedrock-docs": "^3.2.2",
     "bedrock-express": "^3.0.0",
     "bedrock-https-agent": "^1.0.1",
     "bedrock-injector": "^1.0.0",
